@@ -13,12 +13,13 @@ namespace TeploobmenLibrary
                 Y1 = (inputData.RasD * inputData.RasTm) / ((inputData.RasTemM+273) * 1000 * inputData.RasTemG)
             };
             output.Y1_DOP = 1 - output.m * Math.Exp((output.m - 1) * output.Y0 / output.m);
-            for (float i = 0; i<inputData.RasH; i += 0.5f)
+            for (float i = 0; i<=inputData.RasH; i += 0.5f)
             {
                 var tableRow = new TableRowModel
                 {
                     Y = (inputData.RasTepl*i)/(inputData.RasV*inputData.RasTemG*1000)
                 };
+                tableRow.RasH = i;
                 tableRow.ExpY = 1 - Math.Exp(((output.m - 1) * tableRow.Y) / output.m);
                 tableRow.MexpY = 1 - output.m*Math.Exp(((output.m - 1) * tableRow.Y) / output.m);
                 tableRow.V = tableRow.ExpY/ 1 - output.m * Math.Exp(((output.m - 1) * output.Y0) / output.m);

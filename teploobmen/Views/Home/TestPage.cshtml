@@ -3,108 +3,115 @@
 @{
     ViewData["Title"] = "Test Page";
 }
-<div>
-    <form>
-        <div>
-            <label for="RasH">Высота слоя:</label>
-            <input name="RasH" id="RasH"/>
+<div class="row">
+    <div class="col-md-6">
+        <form action="/Home/TestPage" method="post" class="form-floating">
+        <div class="mb-3">
+            <label for="RasH" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Высота слоя:</label>
+                <input name="RasH" id="RasH" value="5" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="RasTm" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Начальная температура материала:</label>
+                <input name="RasTm" id="RasTm" value="600" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="RasTg" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Начальная температура газа:</label>
+                <input name="RasTg" id="RasTg" value="20" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="RasV" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Скорость газа на свободное сечение шахты:</label>
+                <input name="RasV" id="RasV" value="0,6" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="RasTemG" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Средняя теплоёмкость газа:</label>
+                <input name="RasTemG" id="RasTemG" value="1,34" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="RasRas" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Расход материалов:</label>
+                <input name="RasRas" id="RasRas" value="1,7" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="RasTemM" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Теплоемкость материалов:</label>
+                <input name="RasTemM" id="RasTemM" value="1,49" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="RasTepl" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Объемный коэффициент теплоотдачи:</label>
+                <input name="RasTepl" id="RasTepl" value="2450" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="RasD" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Диаметр аппарата:</label>
+                <input name="RasD" id="RasD" value="2,1" class="form-control" />
         </div>
         <div>
-            <label for="RasTm">Высота слоя:</label>
-            <input name="RasTm" id="RasTm" />
-        </div>
-        <div>
-            <label for="RasTg">Высота слоя:</label>
-            <input name="RasTg" id="RasTg" />
-        </div>
-        <div>
-            <label for="RasV">Высота слоя:</label>
-            <input name="RasV" id="RasV" />
-        </div>
-                <div>
-            <label for="RasTemG">Высота слоя:</label>
-            <input name="RasTemG" id="RasTemG"/>
-        </div>
-        <div>
-            <label for="RasRas">Высота слоя:</label>
-            <input name="RasRas" id="RasRas" />
-        </div>
-                <div>
-            <label for="RasTemM">Высота слоя:</label>
-            <input name="RasTemM" id="RasTemM"/>
-        </div>
-                <div>
-            <label for="RasTepl">Высота слоя:</label>
-            <input name="RasTepl" id="RasTepl"/>
-        </div>
-        <div>
-            <label for="RasD">Высота слоя:</label>
-            <input name="RasD" id="RasD" />
+            <button type="submit" class="btn btn-outline-primary">Рассчитать</button>
         </div>
     </form>
-    <table>
+    </div>
+    <div class="col-md-6">
+    <table class="table table-striped">
         <tr>
-            <td>Высота слоя, м</td>
+            <td>Высота слоя</td>
             @foreach(var row in Model.RowModels)
             {
-                <td>@row.RasH</td>
+                <td>@Math.Round(row.RasH,1)</td>
             }
         </tr>
         <tr>
             <td>Y</td>
             @foreach(var row in Model.RowModels)
             {
-                <td>@row.Y</td>
+                <td>@Math.Round(row.Y,3)</td>
             }
         </tr>
         <tr>
             <td>exp</td>
             @foreach (var row in Model.RowModels)
             {
-                <td>@row.ExpY</td>
+                <td>@Math.Round(row.ExpY,3)</td>
             }
         </tr>
         <tr>
             <td>mexp</td>
             @foreach(var row in Model.RowModels)
             {
-                <td>@row.MexpY</td>
+                <td>@Math.Round(row.MexpY,3)</td>
             }
         </tr>
         <tr>
             <td>V</td>
             @foreach(var row in Model.RowModels)
             {
-                <td>@row.V</td>
+                <td>@Math.Round(row.V,3)</td>
             }
         </tr>
         <tr>
             <td>O</td>
             @foreach(var row in Model.RowModels)
             {
-                <td>@row.O</td>
+                <td>@Math.Round(row.O,3)</td>
             }
         </tr>
         <tr>
             <td>t</td>
             @foreach(var row in Model.RowModels)
             {
-                <td>@row.t</td>
+                <td>@Math.Round(row.t,3)</td>
             }
         </tr>
         <tr>
             <td>T</td>
             @foreach(var row in Model.RowModels)
             {
-                <td>@row.T</td>
+                <td>@Math.Round(row.T,3)</td>
             }
         </tr>
         <tr>
             <td>T - t</td>
             @foreach (var row in Model.RowModels)
             {
-                <td>@row.DeltaT</td>
+                <td>@Math.Round(row.DeltaT,3)</td>
             }
         </tr>
     </table>
+</div>
 </div>
