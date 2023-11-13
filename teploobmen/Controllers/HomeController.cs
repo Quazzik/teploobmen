@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using teploobmen.Models;
 using TeploobmenLibrary;
+using TeploobmenLibrary.Models;
 
 namespace teploobmen.Controllers
 {
@@ -30,7 +31,8 @@ namespace teploobmen.Controllers
         [HttpGet]
         public IActionResult TestPage()
         {
-            return View();
+            var data = new TeploobmenOutputModel();
+            return View(data);
         }
 
         public IActionResult Privacy()
