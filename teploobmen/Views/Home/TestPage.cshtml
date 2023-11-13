@@ -1,0 +1,110 @@
+﻿@using TeploobmenLibrary.Models
+@model TeploobmenOutputModel
+@{
+    ViewData["Title"] = "Test Page";
+}
+<div>
+    <form>
+        <div>
+            <label for="RasH">Высота слоя:</label>
+            <input name="RasH" id="RasH"/>
+        </div>
+        <div>
+            <label for="RasTm">Высота слоя:</label>
+            <input name="RasTm" id="RasTm" />
+        </div>
+        <div>
+            <label for="RasTg">Высота слоя:</label>
+            <input name="RasTg" id="RasTg" />
+        </div>
+        <div>
+            <label for="RasV">Высота слоя:</label>
+            <input name="RasV" id="RasV" />
+        </div>
+                <div>
+            <label for="RasTemG">Высота слоя:</label>
+            <input name="RasTemG" id="RasTemG"/>
+        </div>
+        <div>
+            <label for="RasRas">Высота слоя:</label>
+            <input name="RasRas" id="RasRas" />
+        </div>
+                <div>
+            <label for="RasTemM">Высота слоя:</label>
+            <input name="RasTemM" id="RasTemM"/>
+        </div>
+                <div>
+            <label for="RasTepl">Высота слоя:</label>
+            <input name="RasTepl" id="RasTepl"/>
+        </div>
+        <div>
+            <label for="RasD">Высота слоя:</label>
+            <input name="RasD" id="RasD" />
+        </div>
+    </form>
+    <table>
+        <tr>
+            <td>Высота слоя, м</td>
+            @foreach(var row in Model.RowModels)
+            {
+                <td>@row.RasH</td>
+            }
+        </tr>
+        <tr>
+            <td>Y</td>
+            @foreach(var row in Model.RowModels)
+            {
+                <td>@row.Y</td>
+            }
+        </tr>
+        <tr>
+            <td>exp</td>
+            @foreach (var row in Model.RowModels)
+            {
+                <td>@row.ExpY</td>
+            }
+        </tr>
+        <tr>
+            <td>mexp</td>
+            @foreach(var row in Model.RowModels)
+            {
+                <td>@row.MexpY</td>
+            }
+        </tr>
+        <tr>
+            <td>V</td>
+            @foreach(var row in Model.RowModels)
+            {
+                <td>@row.V</td>
+            }
+        </tr>
+        <tr>
+            <td>O</td>
+            @foreach(var row in Model.RowModels)
+            {
+                <td>@row.O</td>
+            }
+        </tr>
+        <tr>
+            <td>t</td>
+            @foreach(var row in Model.RowModels)
+            {
+                <td>@row.t</td>
+            }
+        </tr>
+        <tr>
+            <td>T</td>
+            @foreach(var row in Model.RowModels)
+            {
+                <td>@row.T</td>
+            }
+        </tr>
+        <tr>
+            <td>T - t</td>
+            @foreach (var row in Model.RowModels)
+            {
+                <td>@row.DeltaT</td>
+            }
+        </tr>
+    </table>
+</div>

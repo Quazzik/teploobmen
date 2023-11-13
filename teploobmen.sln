@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "teploobmen", "teploobmen\teploobmen.csproj", "{B7079236-5177-48EA-87DB-5B28EA3200F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeploobmenLibrary", "TeploobmenLibrary\TeploobmenLibrary.csproj", "{EE2A53EF-22B8-4BC6-87CA-996E73C4C41B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7079236-5177-48EA-87DB-5B28EA3200F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7079236-5177-48EA-87DB-5B28EA3200F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7079236-5177-48EA-87DB-5B28EA3200F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7079236-5177-48EA-87DB-5B28EA3200F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE2A53EF-22B8-4BC6-87CA-996E73C4C41B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE2A53EF-22B8-4BC6-87CA-996E73C4C41B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE2A53EF-22B8-4BC6-87CA-996E73C4C41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE2A53EF-22B8-4BC6-87CA-996E73C4C41B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE7C0B59-6EBE-4AF4-921A-3F165C28B2AF}
+	EndGlobalSection
+EndGlobal
