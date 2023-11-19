@@ -22,8 +22,8 @@ namespace TeploobmenLibrary
                 tableRow.RasH = i;
                 tableRow.ExpY = 1 - Math.Exp(((output.m - 1) * tableRow.Y) / output.m);
                 tableRow.MexpY = 1 - output.m*Math.Exp(((output.m - 1) * tableRow.Y) / output.m);
-                tableRow.V = tableRow.ExpY/ 1 - output.m * Math.Exp(((output.m - 1) * output.Y0) / output.m);
-                tableRow.O = tableRow.MexpY / 1 - output.m * Math.Exp(((output.m - 1) * output.Y0) / output.m);
+                tableRow.V = tableRow.ExpY/ output.Y1_DOP;
+                tableRow.O = tableRow.MexpY / output.Y1_DOP;
                 var beb = inputData.RasTg-inputData.RasTm;
                 tableRow.t = inputData.RasTm+beb*tableRow.V;
                 tableRow.T = inputData.RasTm+beb*tableRow.O;
