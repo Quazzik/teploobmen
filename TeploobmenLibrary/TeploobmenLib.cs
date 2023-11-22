@@ -30,7 +30,6 @@ namespace TeploobmenLibrary
                 tableRow.DeltaT = Math.Abs(tableRow.T-tableRow.t);
                 output.RowModels.Add(tableRow);
             }
-
             return output;
         }
     }

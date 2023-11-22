@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using teploobmen.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var ConntecionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
+
+builder.Services.AddDbContext<MyApplicationContext>(o => o.UseSqlite(ConntecionString));
 
 var app = builder.Build();
 
