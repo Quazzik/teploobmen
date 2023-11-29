@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using teploobmen.Data;
 
@@ -9,6 +10,10 @@ builder.Services.AddControllersWithViews();
 var ConntecionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
 
 builder.Services.AddDbContext<MyApplicationContext>(o => o.UseSqlite(ConntecionString));
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options => options.LoginPath = "/login");
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -25,6 +30,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
