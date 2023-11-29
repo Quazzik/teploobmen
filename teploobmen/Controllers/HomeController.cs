@@ -28,7 +28,7 @@ namespace teploobmen.Controllers
         [HttpPost]
         public IActionResult TestPage(TestPageModel model)
         {
-            if (model.InputData == null) { return View(); }
+            if (model.InputData == null) { return View();}
             var transferData = new TeploobmenInputData
             {
                 RasH = model.InputData.RasH,
@@ -58,6 +58,20 @@ namespace teploobmen.Controllers
                 InputData = vardata,
             };
             return View(data);
+        }
+
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var vardata = _context.InputDatas.FirstOrDefault(x => x.ID == id);
+            if(vardata != null)
+            {
+                _context.InputDatas.Remove(vardata);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Privacy()
