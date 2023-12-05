@@ -21,7 +21,8 @@ namespace teploobmen.Controllers
 
         public IActionResult Index()
         {
-            var inputDatas = _context.InputDatas.ToList();
+            var userId = GetUserId();
+            var inputDatas = _context.InputDatas.Where(x => x.UserID == userId || x.UserID == null).ToList();
             return View(inputDatas);
         }
 
@@ -29,6 +30,7 @@ namespace teploobmen.Controllers
         public IActionResult TestPage(TestPageModel model)
         {
             if (model.InputData == null) { return View();}
+
             var transferData = new TeploobmenInputData
             {
                 RasH = model.InputData.RasH,
@@ -43,6 +45,9 @@ namespace teploobmen.Controllers
             };
             var output = TeploobmenLib.Calculate(transferData);
             model.OutputModel = output;
+
+            model.InputData.UserID = GetUserId();
+
             _context.InputDatas.Add(model.InputData);
             _context.SaveChanges();
             return View(model);
@@ -51,8 +56,9 @@ namespace teploobmen.Controllers
         [HttpGet]
         public IActionResult TestPage([FromQuery] int variant)
         {
+            var userId = GetUserId();
             if (variant == 0) return View();
-            var vardata = _context.InputDatas.FirstOrDefault(x => x.ID == variant);
+            var vardata = _context.InputDatas.FirstOrDefault(x => x.ID == variant && (x.UserID == userId || x.UserID == null));
             var data = new TestPageModel
             {
                 InputData = vardata,
@@ -64,7 +70,8 @@ namespace teploobmen.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var vardata = _context.InputDatas.FirstOrDefault(x => x.ID == id);
+            var userId = GetUserId();
+            var vardata = _context.InputDatas.FirstOrDefault(x => x.ID == id && x.UserID == userId);
             if(vardata != null)
             {
                 _context.InputDatas.Remove(vardata);
@@ -83,6 +90,13 @@ namespace teploobmen.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private int? GetUserId()
+        {
+            var userIdString = User.FindFirst("Id")?.Value;
+            int? userId = userIdString != null ? Convert.ToInt32(userIdString) : null;
+            return userId;
         }
     }
 }

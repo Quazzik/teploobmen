@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using teploobmen.Data;
 
@@ -10,9 +11,10 @@ using teploobmen.Data;
 namespace teploobmen.Migrations
 {
     [DbContext(typeof(MyApplicationContext))]
-    partial class MyApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20231205225917_TableInputDataUserID")]
+    partial class TableInputDataUserID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.25");
