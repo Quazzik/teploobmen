@@ -47,9 +47,11 @@ namespace teploobmen.Controllers
             model.OutputModel = output;
 
             model.InputData.UserID = GetUserId();
-
-            _context.InputDatas.Add(model.InputData);
-            _context.SaveChanges();
+            if (model.save)
+            {
+                _context.InputDatas.Add(model.InputData);
+                _context.SaveChanges();
+            }
             return View(model);
         }
 
@@ -63,6 +65,7 @@ namespace teploobmen.Controllers
             {
                 InputData = vardata,
             };
+            data.InputData = vardata;
             return View(data);
         }
 
