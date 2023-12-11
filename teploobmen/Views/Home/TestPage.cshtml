@@ -122,8 +122,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js" integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     var lables = @Json.Serialize(Model?.OutputModel?.RowModels.Select(row => row.RasH).ToList())
-    var values1 = @Json.Serialize(Model?.OutputModel?.RowModels.Select(row => row.T).ToList())
-    var values2 = @Json.Serialize(Model?.OutputModel?.RowModels.Select(row => row.t).ToList())
+    var tgaz = @Json.Serialize(Model?.OutputModel?.RowModels.Select(row => row.T).ToList())
+    var tmat = @Json.Serialize(Model?.OutputModel?.RowModels.Select(row => row.t).ToList())
+    var delta = @Json.Serialize(Model?.OutputModel?.RowModels.Select(row => row.DeltaT).ToList())
     const ctx = document.getElementById('myChart');
 
     new Chart(ctx, {
@@ -131,15 +132,20 @@
         data: {
             labels: lables,
             datasets: [{
-                label: 'f(H) = T',
-                data: values1,
+                label: 'f(H) = T, Температура газа',
+                data: tgaz,
                 borderWidth: 1
             },
                 {
-            label: 'f(H) = t',
-            data: values2,
+            label: 'f(H) = t, Температура материала',
+                data: tmat,
             borderWidth: 1
-        }]
+        },
+            {
+                label: 'Разница температур',
+                data: delta,
+                borderWidth: 1
+            }]
         },
         options: {
             scales: {
