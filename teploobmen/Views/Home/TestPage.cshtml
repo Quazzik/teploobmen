@@ -7,60 +7,60 @@
     <div class="col-md-6">
         <form action="/Home/TestPage" method="post" class="form-floating">
         <div class="mb-3">
-            <label for="RasH" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Высота слоя:</label>
+            <label for="RasH" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Высота слоя, м:</label>
                 <input name="InputData.RasH" id="RasH" value="@Model?.InputData?.RasH" class="form-control" />
         </div>
         <div class="mb-3">
-            <label for="RasTm" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Начальная температура материала:</label>
+                <label for="RasTm" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Начальная температура материала, °C:</label>
                 <input name="InputData.RasTm" id="RasTm" value="@Model?.InputData?.RasTm" class="form-control" />
         </div>
         <div class="mb-3">
-            <label for="RasTg" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Начальная температура газа:</label>
+                <label for="RasTg" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Начальная температура газа, °C:</label>
                 <input name="InputData.RasTg" id="RasTg" value="@Model?.InputData?.RasTg" class="form-control" />
         </div>
         <div class="mb-3">
-            <label for="RasV" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Скорость газа на свободное сечение шахты:</label>
+                <label for="RasV" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Скорость газа на свободное сечение шахты, м/с:</label>
                 <input name="InputData.RasV" id="RasV" value="@Model?.InputData?.RasV" class="form-control" />
         </div>
         <div class="mb-3">
-            <label for="RasTemG" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Средняя теплоёмкость газа:</label>
+                <label for="RasTemG" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Средняя теплоёмкость газа, кДж/(м3 • К):</label>
                 <input name="InputData.RasTemG" id="RasTemG" value="@Model?.InputData?.RasTemG" class="form-control" />
         </div>
         <div class="mb-3">
-            <label for="RasRas" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Расход материалов:</label>
+                <label for="RasRas" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Расход материалов, кг/с:</label>
                 <input name="InputData.RasRas" id="RasRas" value="@Model?.InputData?.RasRas" class="form-control" />
         </div>
         <div class="mb-3">
-            <label for="RasTemM" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Теплоемкость материалов:</label>
+                <label for="RasTemM" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Теплоемкость материалов, кДж/(кг • К):</label>
                 <input name="InputData.RasTemM" id="RasTemM" value="@Model?.InputData?.RasTemM" class="form-control" />
         </div>
         <div class="mb-3">
-            <label for="RasTepl" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Объемный коэффициент теплоотдачи:</label>
+                <label for="RasTepl" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Объемный коэффициент теплоотдачи, Вт/(м3 • К):</label>
                 <input name="InputData.RasTepl" id="RasTepl" value="@Model?.InputData?.RasTepl" class="form-control" />
         </div>
         <div class="mb-3">
-            <label for="RasD" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Диаметр аппарата:</label>
+            <label for="RasD" class="form-control" type="text" placeholder="Default input" aria-label="default input example">Диаметр аппарата, м:</label>
                 <input name="InputData.RasD" id="RasD" value="@Model?.InputData?.RasD" class="form-control" />
-        </div>
-        <div>
-            <button type="submit" class="btn btn-outline-primary">Рассчитать</button>
         </div>
             <div class="form-check form-switch form-check-reverse">
                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse" asp-for="save">
                 <label class="form-check-label" for="flexSwitchCheckReverse">Сохранить результаты</label>
             </div>
+        <div>
+            <button type="submit" class="btn btn-outline-primary">Рассчитать</button>
+        </div>
     </form>
     </div>
     <div class="col-md-6">
     <table class="table table-striped">
         <tr>
-            <td>Высота слоя</td>
+            <td>Высота слоя, м</td>
                 @foreach (var row in Model?.OutputModel?.RowModels ?? new List<TableRowModel>())
             {
                 <td>@Math.Round(row.RasH,1)</td>
             }
         </tr>
-        <tr>
+@*        <tr>
             <td>Y</td>
                 @foreach (var row in Model?.OutputModel?.RowModels ?? new List<TableRowModel>())
             {
@@ -94,23 +94,23 @@
             {
                 <td>@Math.Round(row.O,3)</td>
             }
-        </tr>
+        </tr>*@
         <tr>
-            <td>t</td>
+                <td>t, °C</td>
                 @foreach (var row in Model?.OutputModel?.RowModels ?? new List<TableRowModel>())
             {
                 <td>@Math.Round(row.t,3)</td>
             }
         </tr>
         <tr>
-            <td>T</td>
+                <td>T, °C</td>
                 @foreach (var row in Model?.OutputModel?.RowModels ?? new List<TableRowModel>())
                 {
                 <td>@Math.Round(row.T,3)</td>
             }
         </tr>
         <tr>
-            <td>T - t</td>
+                <td>T - t, °C</td>
                 @foreach (var row in Model?.OutputModel?.RowModels ?? new List<TableRowModel>())
             {
                 <td>@Math.Round(row.DeltaT,3)</td>
